@@ -150,6 +150,7 @@ def split_domain_port(host):
     domain, port = bits if len(bits) == 2 else (bits[0], '')
     # Remove a trailing dot (if present) from the domain.
     domain = domain[:-1] if domain.endswith('.') else domain
+    if port=='': port = '80'
     return domain, port
 
 def reset_user_pw(request, email):
