@@ -1,0 +1,55 @@
+﻿{% load static %}
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="{% static 'css/bed_availability.css' %}">
+    <title>Douglas County Emergency Services</title>
+</head>
+<body>
+    <div class="row">
+        <h2 align="center">Hospital Bed Information</h2>
+    </div>
+    <div>
+        <table class="blueTable">
+            <thead>
+                <tr>
+                    <th>Hospital Name</th>
+                    <th>Bed Type</th>
+                    <th># of Beds</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for bed in beds %}
+                <tr>
+                    <td>{{ bed.organization }}</td>
+                    <td>{{ bed.bed_type }}</td>
+                    <td>{{ bed.num_available }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="content container">
+        <div class="row" style="width:100%">
+            <div class="col-md-12" style="width: 100%">
+                <div class="links">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="{% url 'beds:bed_availability' %}"><img src="{% static 'images/bed.jpg' %}" align="left" width="70" height="50" title = "Refresh" alt="Refresh"/></a>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                                <a href="{% url 'events:home' %}"><img src="{% static 'images/home1.jpg' %}" align="right" width="100" height="50" title="Home" alt="Home"/></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

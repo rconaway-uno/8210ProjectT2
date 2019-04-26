@@ -1,0 +1,17 @@
+{% extends 'events/nurse_base.html' %}
+{% block content %}
+<h1>Edit Patient Injuries</h1>
+<form method="POST" class="injury-form">
+    {% csrf_token %}
+    <table border="1">
+        {{ form }}
+    </table>
+    <tr><td><P></P></td></tr>
+    <tr>
+        <td><button type="submit" class="save btn btn-default">Update</button>
+            <a href="{% url 'patients:patient_list' %}" ><span class="btn btn-primary">Cancel</span></a>
+        </td>
+    </tr>
+
+</form>
+{% endblock %}

@@ -1,0 +1,74 @@
+﻿{% extends 'events/nurse_base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Douglas County Health Services</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+</head>
+<body>
+    <style>
+        body {
+            background-color: white;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                        Douglas County Health Services
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h2 style="padding-left: 15Px">Injuries {{ injury.patient }}</h2>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr class="bg-info">
+                    <th>Patient</th>
+                    <th>Injury</th>
+                    <th>Created</th>
+
+                    <th colspan="5">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for injury in injuries %}
+                <tr>
+                    <td>{{ injury.patient }}</td>
+                    <td>{{ injury.injury_type }}</td>
+                    <td>{{ injury.created_date }}</td>
+
+                    <td>
+                        <a href="{% url 'patients:injury_edit' pk=injury.pk %}" class="btn btn-warning">Edit</a>
+                    <td>
+                        <a href="{% url 'patients:injury_delete' pk=injury.pk %}"
+                           onclick="return confirm('Are you sure you want to delete?')"
+                           class="btn btn-danger">Delete</a>
+                    </td>
+
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <tr><td><P></P></td></tr>
+        <tr>
+            <td><a href="{% url 'patients:injury_new' %}" ><span class="btn btn-primary">Add Injury</span></a>
+                <a href="{% url 'patients:patient_list' %}" ><span class="btn btn-primary">Patient List</span></a>
+            </td>
+        </tr>
+    </div>
+
+</body>
+</html>
+{% endblock %}

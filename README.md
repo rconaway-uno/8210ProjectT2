@@ -1,2 +1,6 @@
 # 8210ProjectT2
-ISQA8210 - County Health Services Bed Tracking - Updated Formatting
+
+Installs
+pip install django-mathfilters
+pip install django-crispy-forms
+pip install xhtml2pdf

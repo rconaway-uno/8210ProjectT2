@@ -1,0 +1,18 @@
+{% extends 'events/base.html' %}
+
+{% block content %}
+<h1>Add New Organization</h1>
+<form method="POST" class="org-form">
+    {% csrf_token %}
+    <table border="1">
+        {{ form }}
+    </table>
+    <tr><td><p></p></td></tr>
+    <tr>
+        <td><button type="submit" class="save btn btn-default">Save</button>
+            <a class="btn btn-default" target = '_self' href="{% url 'events:org_list' %}" role="button">Cancel</a>
+        </td>
+    </tr>
+
+</form>
+{% endblock %}

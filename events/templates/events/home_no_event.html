@@ -1,0 +1,23 @@
+{% extends "events/base.html" %}
+{% load staticfiles %}
+{% block content %}
+
+    <div class="page-container" style="width: 100%">
+        <h2 class="top-menu">Hello {{ user.username }}</h2>
+    </div>
+        <div class="content container">
+            <div class="row" style="width:100%">
+                <div class="col-md-12" style="width: 100%">
+                    <div class="links">
+                        <!-- Example row of columns -->
+                        <div class="row">
+                            <div class="col-md-3">
+                                <!--<div class="thumbnail">-->
+                                <img src="{% static "images/home1.jpg" %}" align="center" height="350" alt="home1"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

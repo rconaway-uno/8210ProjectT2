@@ -1,0 +1,17 @@
+{% extends 'events/nurse_base.html' %}
+
+{% block content %}
+<h1>Add New Disposition</h1>
+<form method="POST" class="disposition-form">
+    {% csrf_token %}
+    <table border="1">
+        {{ form }}
+    </table>
+    <tr><td><P></P></td></tr>
+    <tr>
+        <td><button type="submit" class="save btn btn-default">Save</button>
+            <a href="{% url 'patients:patient_list' %}" ><span class="btn btn-primary">Cancel</span></a>
+        </td>
+    </tr>
+</form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'events/admin_base.html' %}
+{% comment %}{% load crispy_forms_tags %}{% endcomment %}
+{% block content %}
+    <h1>Edit User</h1>
+    <form method="POST" class="user-form">
+        {% csrf_token %}
+        <table border="1">
+            {{ form }}
+        </table>
+        <table>
+            <tr><td><P></P></td></tr>
+            <tr>
+                <td><button type="submit" class="save btn btn-default">Save</button>
+                    <a class="btn btn-default" target = '_self' href="{% url 'events:users_list' %}" role="button">Cancel</a>
+                </td>
+            </tr>
+        </table>
+    </form>
+{% endblock %}

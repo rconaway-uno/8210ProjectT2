@@ -1,0 +1,17 @@
+{% extends 'events/base.html' %}
+{% block content %}
+<h1>Edit Event</h1>
+<form method="POST" class="event-form">
+    {% csrf_token %}
+    <table border="1">
+        {{ form }}
+    </table>
+    <tr><td><p></p></td></tr>
+    <tr>
+        <td><button type="submit" class="save btn btn-default">Update</button>
+            <a href="{% url 'events:event_list' %}" ><span class="btn btn-primary">Cancel</span></a>
+        </td>
+    </tr>
+
+</form>
+{% endblock %}

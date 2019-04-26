@@ -1,0 +1,19 @@
+{% extends 'events/admin_base.html' %}
+{% load staticfiles %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <div class="page-container">
+            <h2 class="top-menu">Manage Users</h2>
+            <table>
+                <tr><td><p>Please choose from below user options:</p></td></tr>
+                <tr>
+                    <td><a class="btn btn-default" target = '_self' href="{% url 'events:users_list' %}" role="button">All Users &raquo;</a>
+                        <a class="btn btn-default" href="{% url 'events:nurse_list' %}" role="button">Nurse &raquo;</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    {% endif %}
+
+
+{% endblock %}

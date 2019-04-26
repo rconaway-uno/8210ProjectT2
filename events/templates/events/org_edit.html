@@ -1,0 +1,19 @@
+{% extends 'events/admin_base.html' %}
+{% comment %}{% load crispy_forms_tags %}{% endcomment %}
+{% block content %}
+    <h1>Edit Organization</h1>
+    <form method="POST" class="org-form">
+        {% csrf_token %}
+        <table border="1">
+            {{ form }}
+        </table>
+        <tr><td><p></p></td></tr>
+        <tr>
+            <td><button type="submit" class="save btn btn-default">Save</button>
+                <a href="{% url 'events:org_list' %}" ><span class="btn btn-primary">Cancel</span></a>
+            </td>
+        </tr>
+
+
+    </form>
+{% endblock %}

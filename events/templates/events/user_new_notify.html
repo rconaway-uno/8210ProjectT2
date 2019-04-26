@@ -1,0 +1,5 @@
+You are designated as the coordinator for your hospital and a new account has been created for you in the Douglas County Health Systems Emergency Hospital Bed Tracking System.
+Please follow the link below to reset your password and log into the system.
+{{ protocol }}://{{ domain }}{% url "events:password_reset_confirm" uidb64=uid token=token %}
+Your username is: {{ user.get_username }}
+

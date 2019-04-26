@@ -1,0 +1,39 @@
+{% extends 'events/admin_base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <div class="page-container">
+            <h2 class="top-menu">Welcome {{ user.username }},</h2>
+            <p>Please choose from below options.</p>
+        </div>
+    {% endif %}
+
+
+    <table>
+        <tr><td><p>Manage:</p></td></tr>
+        <tr>
+            <td><a href="{% url 'events:user_option' %}" ><span class="btn btn-primary">Manage Users</span></a>
+                <a href="{% url 'events:event_list' %}" ><span class="btn btn-primary">Manage Events</span></a>
+                <a href="{% url 'events:org_list' %}" ><span class="btn btn-primary">Manage Organizations</span></a>
+            </td>
+        </tr>
+        <tr><td><p></p></td></tr>
+        <tr><td><p>Reports:</p></td></tr>
+        <tr>
+            <td><a href="{% url 'beds:bed_summary_pdf' %}" ><span class="btn btn-primary">Bed Report</span></a>
+                <a href="{% url 'events:org_summary_pdf' %}" ><span class="btn btn-primary">Organization Report</span></a>
+                <a href="{% url 'events:nurse_summary_pdf' %}" ><span class="btn btn-primary">Nurse Report</span></a>
+            </td>
+        </tr>
+        <tr><td><p></p></td></tr>
+        <tr><td><p>Search:</p></td></tr>
+        <tr>
+            <td>
+                <a href="{% url 'patients:patient_search' %}" ><span class="btn btn-primary">Search Patients</span></a>
+            </td>
+        </tr>
+    </table>
+
+
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends 'events/admin_base.html' %}
+{% load staticfiles %}
+{% block content %}
+    {% if user.is_authenticated %}
+        <style>
+            body {
+                background-color: beige;
+            }
+            table{
+                background-color: azure;
+            }
+        </style>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">Welcome!</div>
+                        <div class="panel-body">
+                            Douglas County Emergency Services!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <h2 style="padding-left: 15Px">Event Information</h2>
+        </div>
+        <div>
+            <table class="table table-bordered table-hover">
+                <thead>
+                <tr class="bg-info">
+                    <th>Event Type</th>
+                    <th>Event Description</th>
+                    <th>Event Start</th>
+                    <th>Event End</th>
+                    <th>Simulation</th>
+                    <th>Event Created Date</th>
+
+
+                    <th colspan="2">Actions</th>
+
+                </tr>
+                </thead>
+                <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td>{{ event.event_type }}</td>
+                        <td>{{ event.event_description }}</td>
+                        <td>{{ event.event_start_date }}</td>
+                        <td>{{ event.event_end_date }}</td>
+                        <td>{{ event.simulation_flag }}</td>
+                        <td>{{ event.created_date }}</td>
+
+
+
+                        <td><a href="{% url 'events:event_edit' pk=event.pk %}" class="btn btn-primary">Edit</a></td>
+                        <td><a href="{% url 'events:event_delete' pk=event.pk %}" onclick="return confirm('Are you sure you want to delete?')" class="btn btn-primary">Delete</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <tr><td><p></p></td></tr>
+            <tr>
+                <td><a href="{% url 'events:event_new' %}" ><span class="btn btn-primary">Add Event</span></a>
+                    <a href="{% url 'events:end_curr_event' %}" ><span class="btn btn-primary">End Date Active Event</span></a>
+                </td>
+            </tr>
+        </div>
+    {% endif %}
+{% endblock %}

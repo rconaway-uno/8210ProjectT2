@@ -1,0 +1,12 @@
+{% extends 'events/nurse_base.html' %}
+
+{% block content %}
+<h1>Add New Injury</h1>
+<form method="POST" class="injury-form">
+    {% csrf_token %}
+    <table border="1">
+        {{ form }}
+    </table>
+    <button type="submit" class="save btn btn-default">Save</button>
+</form>
+{% endblock %}

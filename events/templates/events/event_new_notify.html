@@ -1,0 +1,5 @@
+A new emergency event has been initiated and you are designated as the coordinator for your hospital.  Please follow the link below to reset your password
+and log into the Douglas County Health Systems Emergency Hospital Bed Tracking System and enter the available bed counts for your hospital.
+{{ protocol }}://{{ domain }}{% url "events:password_reset_confirm" uidb64=uid token=token %}
+Your username, in case you've forgotten: {{ user.get_username }}
+

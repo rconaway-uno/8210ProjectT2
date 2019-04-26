@@ -1,0 +1,80 @@
+﻿{% extends 'events/nurse_base.html' %}
+{% load staticfiles %}
+{% block content %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Douglas County Health Services</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+
+</head>
+<body>
+    <style>
+        body {
+            background-color: white;
+        }
+    </style>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="panel panel-primary">
+                    <div class="panel-heading"></div>
+                    <div class="panel-body">
+                        Douglas County Health Services
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <h2 style="padding-left: 15Px">Disposition {{triage.patient}}</h2>
+    </div>
+    <div>
+        <table class="table table-striped table-bordered table-hover">
+            <thead>
+                <tr class="bg-info">
+                    <th>Patient</th>
+                    <th>Disposition Type</th>
+                    <th>Description</th>
+                    <th>Transfer to Org</th>
+                    <th>Time of Death</th>
+                    <th>Updated Condition</th>
+
+                    <th colspan="5">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for disposition in dispositions %}
+                <tr>
+                    <td>{{ disposition.patient }}</td>
+                    <td>{{ disposition.disposition_type }}</td>
+                    <td>{{ disposition.description }}</td>
+                    <td>{{ disposition.transfer_to_org }}</td>
+                    <td>{{ disposition.time_of_death }}</td>
+                    <td>{{ disposition.updated_condition }}</td>
+
+                    <td>
+                        <a href="{% url 'patients:disposition_edit' pk=disposition.pk %}" class="btn btn-warning">Edit</a>
+                    <td>
+                        <a href="{% url 'patients:disposition_delete' pk=disposition.pk %}"
+                           onclick="return confirm('Are you sure you want to delete?')"
+                           class="btn btn-danger">Delete</a>
+                    </td>
+
+
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <tr><td><P></P></td></tr>
+        <tr>
+            <td><a href="{% url 'patients:disposition_new' %}" ><span class="btn btn-primary">Add Disposition</span></a>
+                <a href="{% url 'patients:patient_list' %}" ><span class="btn btn-primary">Patient List</span></a>
+            </td>
+        </tr>
+  </div>
+
+</body>
+</html>
+{% endblock %}

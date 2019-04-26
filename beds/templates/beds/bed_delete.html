@@ -1,0 +1,13 @@
+{% extends 'events/nurse_base.html' %}
+ {% block body_block %}
+<h1>Delete {{ bed.type }}?</h1>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" class="btn btn-danger" value="Delete">
+    <a href="{% url 'chsbeds:home' pk=bed.id %} ">Cancel</a>
+
+</form>
+
+{% endblock %}
+
